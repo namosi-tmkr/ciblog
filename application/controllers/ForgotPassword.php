@@ -196,9 +196,11 @@ class ForgotPassword extends MY_Controller {
 
 			$result = $this->forgotpassword_model->update_password();
 			if($result) {
+
 				$this->forgotpassword_model->delete_token($email, $email_code);
 				$this->session->set_flashdata('recover_pw_updated', "Your password has been updated. You may log in now.");
 				redirect('users/login');
+				
 			}
 		}
 	}
